@@ -13,7 +13,7 @@ public class ApiConnector {
 
     public static String loginAndGetToken(String email, String password) throws IOException {
         // Construct login URL
-        URL loginUrl = new URL("http://localhost/api/v1/auth/login");
+        URL loginUrl = new URL(getConfigParameters().getProperty("BASE_URL") + "auth/login");
 
         // Create connection
         HttpURLConnection connection = (HttpURLConnection) loginUrl.openConnection();

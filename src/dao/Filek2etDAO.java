@@ -36,7 +36,7 @@ public class Filek2etDAO {
         }
 
         // Construct other API endpoint URL
-        URL otherEndpointUrl = new URL("http://localhost/api/v1/file2es/get-all?text=decrypt");
+        URL otherEndpointUrl = new URL(getConfigParameters().getProperty("BASE_URL") + "file2es/get-all?text=decrypt");
 
         // Create connection
         HttpURLConnection connection = (HttpURLConnection) otherEndpointUrl.openConnection();

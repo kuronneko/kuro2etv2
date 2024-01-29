@@ -5,10 +5,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- *
- * @author maindesktop
- */
 public class Properties {
     public static java.util.Properties getConfigParameters() {
         java.util.Properties config = new java.util.Properties();
