@@ -1,4 +1,4 @@
-package com.dto;
+package dto;
 
 public class Filek2et {
     private int id;

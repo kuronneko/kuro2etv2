@@ -1,7 +1,7 @@
-package com.exc;
+package exc;
 
-import com.dao.Filek2etDAO;
-import com.utils.ApiConnector;
+import dao.Filek2etDAO;
+import utils.ApiConnector;
 
 import java.io.Console;
 import java.io.IOException;

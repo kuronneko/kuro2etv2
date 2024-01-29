@@ -1,6 +1,6 @@
-package com.dao;
+package dao;
 
-import com.dto.Filek2et;
+import dto.Filek2et;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -12,7 +12,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.utils.Properties.getConfigParameters;
+import static utils.Properties.getConfigParameters;
 
 public class Filek2etDAO {
 
