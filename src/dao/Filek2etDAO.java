@@ -1,8 +1,11 @@
 package dao;
 
 import dto.Filek2et;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,6 +27,7 @@ public class Filek2etDAO {
     }
 
     public List<Filek2et> getAll() throws IOException {
+
         List<Filek2et> filek2etArray = new ArrayList<>();
 
         // Check if the authToken is set
@@ -76,23 +80,33 @@ public class Filek2etDAO {
     }
 
     private List<Filek2et> parseJsonResponse(String jsonResponse) {
+
         List<Filek2et> filek2etList = new ArrayList<>();
 
-        JSONObject jsonObject = new JSONObject(jsonResponse);
+        JSONParser parser = new JSONParser();
 
-        if ("success".equals(jsonObject.getString("status"))) {
-            JSONArray dataArray = jsonObject.getJSONArray("data");
+        try {
+            // Parse the JSON response
+            JSONObject jsonObject = (JSONObject) parser.parse(jsonResponse);
 
-            for (int i = 0; i < dataArray.length(); i++) {
-                JSONObject record = dataArray.getJSONObject(i);
-                int id = record.getInt("id");
-                String name = record.getString("name");
-                String text = record.getString("text");
-                String created_at = record.getString("created_at");
-                String updated_at = record.getString("updated_at");
+            if ("success".equals(jsonObject.get("status"))) {
+                JSONArray dataArray = (JSONArray) jsonObject.get("data");
 
-                filek2etList.add(new Filek2et(id, name, text, created_at, updated_at));
+                // Iterate over the data array
+                for (Object dataObject : dataArray) {
+                    JSONObject record = (JSONObject) dataObject;
+                    int id = Integer.parseInt(record.get("id").toString());
+                    String name = (String) record.get("name");
+                    String text = (String) record.get("text");
+                    String created_at = (String) record.get("created_at");
+                    String updated_at = (String) record.get("updated_at");
+
+                    filek2etList.add(new Filek2et(id, name, text, created_at, updated_at));
+                }
             }
+        } catch (ParseException e) {
+            // Handle the parsing exception
+            e.printStackTrace();
         }
 
         return filek2etList;

@@ -1,6 +1,7 @@
 package exc;
 
 import dao.Filek2etDAO;
+import dto.Filek2et;
 import utils.ApiConnector;
 
 import java.io.Console;
@@ -11,7 +12,7 @@ public class Main {
 
     private static String authToken;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Console console = System.console();
         String password = "";
         String email = "";
@@ -37,6 +38,22 @@ public class Main {
             e.printStackTrace();
         }
 
+
         Filek2etDAO filek2etDAO = new Filek2etDAO(authToken);
+
+        System.out.format("+-----+--------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+%n");
+        System.out.format("| ID  | Name                           | Text                                                                                                                             | Last_Updated        |%n");
+        System.out.format("+-----+--------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+%n");
+
+        for (Filek2et filek2et : filek2etDAO.getAll()) {
+            System.out.format("| %-4d| %-30s| %-100s| %-20s|%n",
+                    filek2et.getId(),
+                    filek2et.getName(),
+                    filek2et.getText(),
+                    filek2et.getUpdated_at());
+        }
+
+        System.out.format("+-----+--------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+%n");
+
     }
 }
