@@ -63,13 +63,18 @@ public class KuroEncrypterTool {
     }
 
     private String convertStringToHex(String text) {
+        StringBuffer hexInputContainer = new StringBuffer(); // Declare hexBuffered container
 
-        StringBuffer inputBuffered = new StringBuffer(text); //buffered input
-        char[] charzedInput = (new StringBuffer(inputBuffered).toString()).toCharArray(); //cut input to char
-        StringBuffer hexInputContainer = new StringBuffer(); //declare hexBuffered container
-        for (int i = 0; i < charzedInput.length; i++) { // String to hex and store on hex container
-            hexInputContainer.append(Integer.toHexString((int) charzedInput[i]));
+        for (int i = 0; i < text.length(); i++) {
+            char currentChar = text.charAt(i);
+
+            if (currentChar == '\n') {
+                hexInputContainer.append(';'); // Add ';' for newline character
+            }
+
+            hexInputContainer.append(Integer.toHexString((int) currentChar)); // Convert the character to its hexadecimal representation
         }
+
         return hexInputContainer.toString();
     }
 

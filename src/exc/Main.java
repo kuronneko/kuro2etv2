@@ -31,29 +31,28 @@ public class Main {
             password = new String(passwordChars);
         }
 
-        try {
-            ApiConnector apiConnector = new ApiConnector();
-            authToken = apiConnector.loginAndGetToken(email, password);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        ApiConnector apiConnector = new ApiConnector();
+        authToken = apiConnector.loginAndGetToken(email, password);
 
         Filek2etDAO filek2etDAO = new Filek2etDAO(authToken);
 
-        System.out.format("+-----+--------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+%n");
-        System.out.format("| ID  | Name                           | Text                                                                                                                             | Last_Updated        |%n");
-        System.out.format("+-----+--------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+%n");
+        System.out.format("+-----+--------------------------------+-------------------------------------------------------------------------------------------------------------------------+----------------------------+%n");
+        System.out.format("| ID  | Name                           | Text                                                                                                                    | Last_Updated               |%n");
+        System.out.format("+-----+--------------------------------+-------------------------------------------------------------------------------------------------------------------------+----------------------------+%n");
 
         for (Filek2et filek2et : filek2etDAO.getAll()) {
-            System.out.format("| %-4d| %-30s| %-100s| %-20s|%n",
+            String formattedText = filek2et.getText() != null ?
+                    filek2et.getText().replaceAll("\n", " ") :
+                    "";
+
+            System.out.format("| %-5d| %-30s| %-120s| %-10s|%n",
                     filek2et.getId(),
                     filek2et.getName(),
-                    filek2et.getText(),
+                    formattedText,
                     filek2et.getUpdated_at());
         }
 
-        System.out.format("+-----+--------------------------------+----------------------------------------------------------------------------------------------------------------------------------+---------------------+%n");
+        System.out.format("+-----+--------------------------------+-------------------------------------------------------------------------------------------------------------------------+----------------------------+%n");
 
     }
 }
