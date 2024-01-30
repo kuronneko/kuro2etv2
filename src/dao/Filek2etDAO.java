@@ -46,6 +46,7 @@ public class Filek2etDAO {
         connection.setRequestProperty("Content-Type", "application/json");
         connection.setRequestProperty("x-api-key", API_KEY);
         connection.setRequestProperty("Authorization", "Bearer " + authToken);
+        connection.setRequestProperty("User-Agent", "Kuro2etv2");
 
         // Get the response code
         int responseCode = connection.getResponseCode();

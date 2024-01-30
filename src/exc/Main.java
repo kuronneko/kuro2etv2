@@ -12,7 +12,7 @@ public class Main {
 
     private static String authToken;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         Console console = System.console();
         String password = "";
         String email = "";
@@ -36,6 +36,24 @@ public class Main {
 
         Filek2etDAO filek2etDAO = new Filek2etDAO(authToken);
 
+        try {
+            new ProcessBuilder("cmd", "/c", "mode con: cols=200 lines=30").inheritIO().start().waitFor();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("             __ __                       __                \n"
+                + "            / //_/_ _________  ___  ___ / /_____           \n"
+                + "           / ,< / // / __/ _ \\/ _ \\/ -_)  '_/ _ \\          \n"
+                + "          /_/|_|\\_,_/_/  \\___/_//_/\\__/_/\\_\\\\___/          \n"
+                + "                                                           \n"
+                + "   ____                       __         ______          __\n"
+                + "  / __/__  __________ _____  / /____ ___/_  __/__  ___  / /\n"
+                + " / _// _ \\/ __/ __/ // / _ \\/ __/ -_) __// / / _ \\/ _ \\/ / \n"
+                + "/___/_//_/\\__/_/  \\_, / .__/\\__/\\__/_/  /_/  \\___/\\___/_/  \n"
+                + "                 /___/_/                                   \n"
+                + "");
+
         System.out.format("+-----+--------------------------------+-------------------------------------------------------------------------------------------------------------------------+----------------------------+%n");
         System.out.format("| ID  | Name                           | Text                                                                                                                    | Last_Updated               |%n");
         System.out.format("+-----+--------------------------------+-------------------------------------------------------------------------------------------------------------------------+----------------------------+%n");
@@ -55,4 +73,5 @@ public class Main {
         System.out.format("+-----+--------------------------------+-------------------------------------------------------------------------------------------------------------------------+----------------------------+%n");
 
     }
+
 }

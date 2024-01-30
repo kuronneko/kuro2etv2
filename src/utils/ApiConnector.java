@@ -22,6 +22,7 @@ public class ApiConnector {
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/json"); // Assuming JSON content
         connection.setRequestProperty("x-api-key", getConfigParameters().getProperty("API_KEY"));  // Include API key in headers
+        connection.setRequestProperty("User-Agent", "Kuro2etv2");
 
         // Enable input/output streams
         connection.setDoOutput(true);
@@ -40,6 +41,7 @@ public class ApiConnector {
 
         // If the login was successful, read the token from the response
         if (responseCode == HttpURLConnection.HTTP_OK) {
+
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                 StringBuilder response = new StringBuilder();
                 String line;
