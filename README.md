@@ -19,7 +19,8 @@ JAVA 8, MySQL
 * Rename .config.properties.example to .config.properties
 * Set API_KEY
 * Set BASE_URL
-* Use a valid credentials to connect to an API
+* Use valid credentials to connect to the API through the console
+* Compile in a .jar file
 
 ### How to get the credentials
 * https://github.com/kuronneko/kuro2etv2-web
