@@ -19,5 +19,7 @@ JAVA 8, MySQL
 * Set BASE_URL
 * Use a valid credentials to connect to an API
 
-### v1 (Deprecated)
+### DB Console edition (Deprecated)
 https://github.com/kuronneko/kuro2et
+### Local GUI edition (Deprecated)
+https://github.com/kuronneko/Hex-to-String
