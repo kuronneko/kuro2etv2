@@ -22,6 +22,7 @@ public class Main {
             System.out.println("+---------------------------------------------------------+");
             System.out.println("| Select [1] Offline mode                                 |");
             System.out.println("| Select [2] API Login                                    |");
+            System.out.println("| Select [3] DB Connection                                |");
             System.out.println("+---------------------------------------------------------+");
             String mainSelection = mainOptionsScanner.nextLine();
 
@@ -33,6 +34,11 @@ public class Main {
         if (mainSelection.equals(String.valueOf(2))) {
             Api api = new Api();
             api.executeApiOptions();
+        }
+
+        if (mainSelection.equals(String.valueOf(3))) {
+            Db db = new Db();
+            db.executeDbOptions();
         }
 
     }

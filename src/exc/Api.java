@@ -1,6 +1,6 @@
 package exc;
 
-import dao.Filek2etDAO;
+import dao.api.Filek2etDAO;
 import dto.Filek2et;
 import utils.ApiConnector;
 
