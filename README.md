@@ -2,7 +2,7 @@
 ### Description: 
 Simple algorithm for encrypting text, based on the hexadecimal system. This console application works as a password manager using the kuro algorithm to encrypt text and store it in a database (Through the Api Rest).
 
-In this new version, the console application needs to connect to a Rest API, in order to centralize the information and be used with different platforms.
+In this new version, the console application has the option of connecting to a REST API, in order to centralize the information and be used with different platforms.
 
 ### Features:
 * Custom Algorithm to encrypt/decrypt text
