@@ -1,6 +1,6 @@
 # Kuro EncrypterTool
 ### Description: 
-Simple algorithm for encrypting text, based on the hexadecimal system. This console application works as a password manager using the kuro algorithm to encrypt text and store it in a database (Through the Api Rest).
+Simple algorithm for encrypting text based on the hexadecimal system. This application works as a password manager using the kuro algorithm to encrypt text and store it in a database.
 
 In this new version, the console application has the option of connecting to a REST API, in order to centralize the information and be used with different platforms.
 
